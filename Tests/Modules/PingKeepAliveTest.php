@@ -21,7 +21,7 @@ use Kadet\Xmpp\Jid;
 use Kadet\Xmpp\Stanza\Iq;
 use Kadet\Xmpp\Stanza\Iq\Query;
 use Kadet\Xmpp\Tests\Stubs\ConnectorStub;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use React\EventLoop\LoopInterface;
 
 use \Kadet\Xmpp\Utils\filter as predicate;
@@ -46,7 +46,7 @@ class PingKeepAliveTest extends \PHPUnit_Framework_TestCase
         $loop->expects($this->never())->method('addPeriodicTimer');
 
         $this
-            ->getMockBuilder(XmppClient::class)
+            ->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid('local@domain.tld'), [
                 'connector' => new ConnectorStub(null, $loop),
                 'default-modules' => false,
@@ -104,11 +104,11 @@ class PingKeepAliveTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param LoopInterface $loop
-     * @return XmppClient|\PHPUnit_Framework_MockObject_MockObject
+     * @return XmppClientBase|\PHPUnit_Framework_MockObject_MockObject
      */
     private function getMockClient(LoopInterface $loop = null)
     {
-        return $this->getMockBuilder(XmppClient::class)
+        return $this->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid('local@domain.tld'), [
                 'connector' => new ConnectorStub(null, $loop),
                 'default-modules' => false,

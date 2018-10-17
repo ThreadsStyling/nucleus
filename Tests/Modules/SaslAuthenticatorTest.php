@@ -25,7 +25,7 @@ use Kadet\Xmpp\Component\SaslAuthenticator;
 use Kadet\Xmpp\Stream\Features;
 use Kadet\Xmpp\Tests\Stubs\ConnectorStub;
 use Kadet\Xmpp\Xml\XmlElement;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 
 /**
  * Class SaslAuthenticatorTest
@@ -35,7 +35,7 @@ use Kadet\Xmpp\XmppClient;
  */
 class SaslAuthenticatorTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var \PHPUnit_Framework_MockObject_MockObject|XmppClient */
+    /** @var \PHPUnit_Framework_MockObject_MockObject|XmppClientBase */
     private $_client;
 
     /**
@@ -173,11 +173,11 @@ class SaslAuthenticatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return XmppClient|\PHPUnit_Framework_MockObject_MockObject
+     * @return XmppClientBase|\PHPUnit_Framework_MockObject_MockObject
      */
     private function getMockClient()
     {
-        return $this->getMockBuilder(XmppClient::class)
+        return $this->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid('local@domain.tld'), [
                 'connector' => new ConnectorStub(),
                 'default-modules' => false

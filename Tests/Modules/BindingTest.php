@@ -24,7 +24,7 @@ use Kadet\Xmpp\Stanza\Stanza;
 use Kadet\Xmpp\Stream\Features;
 use Kadet\Xmpp\Tests\Stubs\ConnectorStub;
 use Kadet\Xmpp\Xml\XmlElement;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use PHPUnit_Framework_MockObject_MockObject as Mock;
 use Kadet\Xmpp\Utils\filter as with;
 
@@ -33,7 +33,7 @@ use Kadet\Xmpp\Utils\filter as with;
  */
 class BindingTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var XmppClient|Mock */
+    /** @var XmppClientBase|Mock */
     private $_client;
 
     public function testFeaturesWithoutBinding()
@@ -125,12 +125,12 @@ class BindingTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param $jid
-     * @return XmppClient|Mock
+     * @return XmppClientBase|Mock
      */
     public function getMockClient($jid)
     {
-        /** @var XmppClient $client */
-        $client = $this->getMockBuilder(XmppClient::class)
+        /** @var XmppClientBase $client */
+        $client = $this->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid($jid), [
                 'connector' => new ConnectorStub()
             ]])->setMethods(['write', 'bind'])

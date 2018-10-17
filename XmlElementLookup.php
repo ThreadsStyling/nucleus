@@ -15,10 +15,10 @@
 
 return [
     [\Kadet\Xmpp\Stream\Stream::class, 'name' => 'stream', 'uri' => \Kadet\Xmpp\Xml\XmlStream::NAMESPACE_URI],
-    [\Kadet\Xmpp\Stream\Features::class, 'name' => 'features', 'uri' => \Kadet\Xmpp\XmppClient::NAMESPACE_URI],
+    [\Kadet\Xmpp\Stream\Features::class, 'name' => 'features', 'uri' => \Kadet\Xmpp\XmppClientBase::NAMESPACE_URI],
     [\Kadet\Xmpp\Stream\Features\StartTls::class, 'name' => 'starttls', 'uri' => \Kadet\Xmpp\Stream\Features\StartTls::XMLNS],
 
-    [\Kadet\Xmpp\Stream\Error::class, 'name' => 'error', 'uri' => \Kadet\Xmpp\XmppClient::NAMESPACE_URI],
+    [\Kadet\Xmpp\Stream\Error::class, 'name' => 'error', 'uri' => \Kadet\Xmpp\XmppClientBase::NAMESPACE_URI],
 
     [\Kadet\Xmpp\Stanza\Stanza::class, 'uri' => 'jabber:client'],
     [\Kadet\Xmpp\Stanza\Iq::class, 'name' => 'iq', 'uri' => 'jabber:client'],

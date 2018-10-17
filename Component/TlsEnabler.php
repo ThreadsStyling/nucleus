@@ -20,7 +20,6 @@ use Kadet\Xmpp\Network\SecureStream;
 use Kadet\Xmpp\Stream\Features;
 use Kadet\Xmpp\Utils\filter as with;
 use Kadet\Xmpp\Xml\XmlElement;
-use Kadet\Xmpp\XmppClient;
 
 class TlsEnabler extends Component
 {

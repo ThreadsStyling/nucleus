@@ -17,7 +17,7 @@ namespace Kadet\Xmpp\Component;
 
 
 use Kadet\Xmpp\Stanza\Iq;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use \Kadet\Xmpp\Utils\filter as with;
 use React\EventLoop\Timer\TimerInterface;
 
@@ -40,7 +40,7 @@ class PingKeepAlive extends Component
         $this->_interval = $interval;
     }
 
-    public function setClient(XmppClient $client)
+    public function setClient(XmppClientBase $client)
     {
         parent::setClient($client);
         $this->_client->on('state', [$this, 'enable'], \Kadet\Xmpp\Utils\filter\equals('ready'));

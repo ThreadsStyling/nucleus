@@ -23,7 +23,7 @@ use Kadet\Xmpp\Exception\Protocol\AuthenticationException;
 use Kadet\Xmpp\Sasl\SaslFactory;
 use Kadet\Xmpp\Stream\Features;
 use Kadet\Xmpp\Xml\XmlElement;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 
 use Kadet\Xmpp\Utils\filter as with;
 use function Kadet\Xmpp\Utils\filter\{
@@ -60,7 +60,7 @@ class SaslAuthenticator extends Component implements Authenticator
         $this->_sasl = $sasl ?: new SaslFactory();
     }
 
-    public function setClient(XmppClient $client)
+    public function setClient(XmppClientBase $client)
     {
         parent::setClient($client);
 

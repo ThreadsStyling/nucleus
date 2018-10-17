@@ -20,14 +20,14 @@ use Kadet\Xmpp\Exception\Protocol\BindingException;
 use Kadet\Xmpp\Stanza\Iq;
 use Kadet\Xmpp\Stream\Features;
 use Kadet\Xmpp\Xml\XmlElement;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use \Kadet\Xmpp\Utils\filter as with;
 
 class Binding extends Component
 {
     const XMLNS = 'urn:ietf:params:xml:ns:xmpp-bind';
 
-    public function setClient(XmppClient $client)
+    public function setClient(XmppClientBase $client)
     {
         parent::setClient($client);
 

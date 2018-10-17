@@ -12,7 +12,8 @@
     "psr/log": "1.0.*",
     "kadet/keylighter": "^0.8",
     "fabiang/sasl": "^1.0",
-    "php-di/php-di": "^5.3"
+    "php-di/php-di": "^5.3",
+    "ext-openssl": "*"
   },
   "require-dev": {
     "bramus/monolog-colored-line-formatter": "~2.0",

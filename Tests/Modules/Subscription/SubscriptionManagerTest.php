@@ -20,7 +20,7 @@ use Kadet\Xmpp\Component\Subscription\SubscriptionManager;
 use Kadet\Xmpp\Jid;
 use Kadet\Xmpp\Stanza\Presence;
 use Kadet\Xmpp\Tests\Stubs\ConnectorStub;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use PHPUnit_Framework_MockObject_MockObject as Mock;
 
 use function Kadet\Xmpp\Utils\filter\{
@@ -33,7 +33,7 @@ use function Kadet\Xmpp\Utils\filter\stanza\{
 class SubscriptionManagerTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var XmppClient|Mock
+     * @var XmppClientBase|Mock
      */
     private $_client;
 
@@ -43,11 +43,11 @@ class SubscriptionManagerTest extends \PHPUnit_Framework_TestCase
     private $_manager;
 
     /**
-     * @return XmppClient|Mock
+     * @return XmppClientBase|Mock
      */
     public function getMockClient()
     {
-        return $this->getMockBuilder(XmppClient::class)
+        return $this->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid('local@domain'), [
                 'connector' => new ConnectorStub(),
                 'default-modules' => false,

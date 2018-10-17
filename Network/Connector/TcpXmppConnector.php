@@ -53,12 +53,18 @@ class TcpXmppConnector implements Connector
         throw new \RuntimeException('Cannot connect to '.$this->_host);
     }
 
-    public function __construct(string $host, LoopInterface $loop)
+    public function __construct(string $host, LoopInterface $loop, bool $use_srv = true, int $port = null)
     {
-        $this->_resolver = new DnsResolver([
-            "_xmpp-client._tcp.$host" => DNS_SRV,
-            $host                     => DNS_A
-        ], 5222);
+        if ($port == null) {
+            $port = 5222;
+        }
+        $records = [$host => DNS_A];
+        if ($use_srv) {
+            array_merge([
+                "_xmpp-client._tcp.$host" => DNS_SRV,
+            ]);
+        }
+        $this->_resolver = new DnsResolver($records, $port);
 
         $this->_host = $host;
         $this->_loop = $loop;

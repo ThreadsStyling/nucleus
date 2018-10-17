@@ -15,9 +15,9 @@
 
 namespace Kadet\Xmpp\Component;
 
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 
 interface ComponentInterface
 {
-    public function setClient(XmppClient $client);
+    public function setClient(XmppClientBase $client);
 }

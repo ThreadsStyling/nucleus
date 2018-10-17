@@ -21,7 +21,7 @@ use Kadet\Xmpp\Jid;
 use Kadet\Xmpp\Stanza\Iq;
 use Kadet\Xmpp\Tests\Stubs\ConnectorStub;
 use function Kadet\Xmpp\Utils\filter\all;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use PHPUnit_Framework_MockObject_MockObject as Mock;
 use \Kadet\Xmpp\Utils\filter as with;
 
@@ -32,7 +32,7 @@ use \Kadet\Xmpp\Utils\filter as with;
  */
 class RosterTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var XmppClient|Mock */
+    /** @var XmppClientBase|Mock */
     private $_client;
     /** @var Roster */
     private $_roster;
@@ -142,12 +142,12 @@ class RosterTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @return XmppClient|Mock
+     * @return XmppClientBase|Mock
      */
     public function getMockClient()
     {
-        /** @var XmppClient $client */
-        $client = $this->getMockBuilder(XmppClient::class)
+        /** @var XmppClientBase $client */
+        $client = $this->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid('local@domain'), [
                 'connector' => new ConnectorStub(),
                 'default-modules' => false

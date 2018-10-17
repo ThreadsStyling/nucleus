@@ -15,18 +15,18 @@
 
 namespace Kadet\Xmpp\Component;
 
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 
 abstract class Component implements ComponentInterface
 {
     /**
      * Reference to XMPP Client instance.
      *
-     * @var XmppClient
+     * @var XmppClientBase
      */
     protected $_client;
 
-    public function setClient(XmppClient $client)
+    public function setClient(XmppClientBase $client)
     {
         $this->_client = $client;
         $this->init();

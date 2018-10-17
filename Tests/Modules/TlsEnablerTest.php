@@ -22,7 +22,7 @@ use Kadet\Xmpp\Network\TcpStream;
 use Kadet\Xmpp\Stream\Features;
 use Kadet\Xmpp\Tests\Stubs\ConnectorStub;
 use Kadet\Xmpp\Xml\XmlElement;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use React\Stream\DuplexStreamInterface;
 use React\Stream\Stream;
 
@@ -34,7 +34,7 @@ use React\Stream\Stream;
  */
 class TlsEnablerTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var XmppClient|\PHPUnit_Framework_MockObject_MockObject */
+    /** @var XmppClientBase|\PHPUnit_Framework_MockObject_MockObject */
     private $_client;
 
     /** @var DuplexStreamInterface|\PHPUnit_Framework_MockObject_MockObject */
@@ -111,8 +111,8 @@ class TlsEnablerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUpClient()
     {
-        /** @var XmppClient $client */
-        $this->_client = $this->getMockBuilder(XmppClient::class)
+        /** @var XmppClientBase $client */
+        $this->_client = $this->getMockBuilder(XmppClientBase::class)
             ->setConstructorArgs([new Jid('local@domain.tld'), [
                 'connector'       => new ConnectorStub($this->_stream),
                 'default-modules' => false

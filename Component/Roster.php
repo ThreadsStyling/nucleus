@@ -24,7 +24,7 @@ use Kadet\Xmpp\Stanza\Iq;
 use Kadet\Xmpp\Utils\Accessors;
 use Kadet\Xmpp\Utils\BetterEmitter;
 use Kadet\Xmpp\Utils\filter as with;
-use Kadet\Xmpp\XmppClient;
+use Kadet\Xmpp\XmppClientBase;
 use Traversable;
 
 use function Kadet\Xmpp\Utils\helper\format;
@@ -45,7 +45,7 @@ class Roster extends Component implements \IteratorAggregate, \ArrayAccess
 
     private $_items = [];
 
-    public function setClient(XmppClient $client)
+    public function setClient(XmppClientBase $client)
     {
         if($this->_client !== null) {
             throw new BadMethodCallException("You cannot change rosters XmppClient instance.");
