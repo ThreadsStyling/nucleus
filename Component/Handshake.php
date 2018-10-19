@@ -38,7 +38,7 @@ class Handshake extends Component implements Authenticator
         $element->setContent(sha1($id . $this->_password, false));
         $this->_client->once("element", function (XmlElement $el) {
             if ($el->getLocalName() == "handshake") {
-                $this->_client->emit("ready");
+                $this->_client->state = "ready";
             }
         });
         $this->_client->write($element);

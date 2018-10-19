@@ -27,8 +27,9 @@ class XmppComponent extends XmppClientBase
         ]);
 
         parent::__construct($jid, $options);
-        $this->on("stream:open", function () {
-            $this->handleStreamOpen();
+        $this->on("stream.open", function ($stream) {
+            $handshake = $this->getContainer()->get(Authenticator::class);
+            $handshake->doHandshake($stream->getAttribute('id'));
         });
     }
 
@@ -39,9 +40,5 @@ class XmppComponent extends XmppClientBase
             'to' => $this->getJid(),
             'xmlns' => 'jabber:component:accept',
         ], $attributes));
-    }
-
-    private function handleStreamOpen() {
-        $this->getContainer()->get(Authenticator::class)->auth(new Features());
     }
 }

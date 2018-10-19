@@ -140,7 +140,7 @@ class XmlElement implements ContainerInterface
     {
         return implode('', array_map(function ($element) {
             if (is_string($element)) {
-                return htmlspecialchars($element);
+                return htmlspecialchars($element, ENT_XML1|ENT_NOQUOTES, 'UTF-8');
             } elseif ($element instanceof XmlElement) {
                 return $element->xml(false);
             }
@@ -184,7 +184,7 @@ class XmlElement implements ContainerInterface
 
         $result = "<{$this->fullName}";
         $result .= ' ' . implode(' ', array_map(function ($key, $value) {
-            return $key . '="' . htmlspecialchars($value, ENT_QUOTES) . '"';
+            return $key . '="' . htmlspecialchars($value, ENT_QUOTES|ENT_XML1, 'UTF-8') . '"';
         }, array_keys($attributes), array_values($attributes)));
 
         if (!empty($this->_children)) {
@@ -559,7 +559,7 @@ class XmlElement implements ContainerInterface
 
     public function __toString()
     {
-        return trim($this->xml(true));
+        return trim($this->xml(false));
     }
 
     /**
