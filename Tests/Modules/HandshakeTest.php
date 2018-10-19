@@ -58,7 +58,8 @@ class HandshakeTest extends \PHPUnit_Framework_TestCase
         }));
         $handshake->doHandshake($id);
         $this->flag = false;
-        $this->_client->once('ready', function () {
+        $this->_client->once('state', function ($state) {
+            $this->assertEquals($state, "ready");
             $this->flag = true;
         });
         $this->success();
