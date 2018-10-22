@@ -23,7 +23,7 @@ trait BetterEmitter
     /**
      * @var PriorityCollection[]
      */
-    protected $listeners;
+    /// protected $listeners;
 
     use EventEmitterTrait;
 
