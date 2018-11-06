@@ -154,7 +154,7 @@ class XmlStream extends StreamDecorator // implements BetterEmitterInterface // 
         $this->write('<?xml version="1.0" encoding="utf-8"?>');
         $this->_outbound = new Stream($attributes);
 
-        $this->write(preg_replace('~\s+/>$~', '>', $this->_outbound));
+        $this->write(preg_replace('~\s*/>$~', '>', $this->_outbound));
         $this->_isOpened = true;
     }
 
