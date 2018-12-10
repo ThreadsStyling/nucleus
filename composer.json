@@ -5,8 +5,8 @@
   "keywords": ["xmpp", "async", "react", "jabber", "im"],
   "require": {
     "php": ">=7.0",
-    "react/stream": "^0.6.0",
-    "react/event-loop": "^0.5",
+    "react/stream": "^0.6 || ^0.5",
+    "react/event-loop": "^0.5 || 0.4.x-dev",
     "react/promise": "^2.5",
     "evenement/evenement": "2.0.*",
     "psr/log": "1.0.*",
