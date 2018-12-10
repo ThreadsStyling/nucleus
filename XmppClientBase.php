@@ -173,7 +173,7 @@ class XmppClientBase extends XmlStream implements ContainerInterface
             'password' => -1
         ]);
 
-        if ($options['default-modules']) {
+        if (array_key_exists('default-modules', $options) && $options['default-modules']) {
             $options['modules'] = array_merge([
                 TlsEnabler::class => new TlsEnabler(),
                 Binding::class => new Binding(),

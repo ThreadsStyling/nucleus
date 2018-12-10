@@ -15,9 +15,9 @@
 
 namespace Kadet\Xmpp\Network;
 
-use React\Stream\Stream;
+use React\Stream\DuplexResourceStream;
 
-class TcpStream extends Stream implements SecureStream
+class TcpStream extends DuplexResourceStream implements SecureStream
 {
     private $_secured = false;
 
