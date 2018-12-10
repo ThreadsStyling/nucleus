@@ -23,7 +23,7 @@ class PriorityCollection implements \IteratorAggregate, \Countable
      * @var array[]
      */
     private $_collection = [];
-    private $_cache;
+    private $_cache = [];
 
 
     /**
